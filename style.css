@@ -1,52 +1,93 @@
+:root {
+    --titulo: rgb(170, 170, 170);
+    --fondo: #200a0a;
+    --buttons: #8B0000;
+    --hover-buttons: #B22222;
+    --principal-text: #E0E0E0;
+    --shadow: 0 0 20px #791010;
+    --shadow-text: 0 0 10px #791010;
+    --font: "Poppins";
+}
+
 body {
-    background: black;
+    background: var(--fondo);
+    animation: fadeIn 1s ease-in-out;
 }
 
 h1 {
-    font-family: 'Graffiti font';
-    color: goldenrod;
-    text-shadow: 3px 2px 0 gold;
+    color: var(--titulo);
+    font-family: var(--font);
     text-align: center;
-    margin-bottom: 20px; /* 👈 espacio con los botones */
-    margin-top: 180px;
-    animation: desvanecer 0.5s infinite alternate;
+    text-shadow: var(--shadow);
+    margin-top: 150px;
+    font-size: 50px;
+    animation: glow 5s infinite ease-in-out;
 }
 
-.buttons {
-  display: flex;              /* pone los botones en fila */
-  justify-content: center;    /* los centra horizontalmente */
-  gap: 40px;                  /* espacio entre botones */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 
-.buttons_option {
+.button-option {
+    margin-left: 40px;
+    background: var(--fondo);
+    border-radius: 3px;
     cursor: pointer;
-    background: goldenrod;
-    border: goldenrod;
-    box-shadow: 0 0 20px gold;
-    border-radius: 4px;
-    padding: 10px 20px;         /* más espacio dentro */
-    font-size: 16px;
-    transition: 0.5s;
-    font-family: "Caveat Brush";
+    font-size: 24px;
+    border: none;
+    padding: 0;
+    color: var(--principal-text);
+    font-family: var(--font);
+    transition: 0.3s;
+    text-decoration: underline #200a0a;
 }
 
-.buttons_option:hover {
+.button-option:hover {
+    color: #B22222;
+    cursor: pointer;
+    text-shadow: 0 0 50px #B22222;
     transform: scale(1.1);
-    background: grey;
-    box-shadow: 0 0 20px rgb(190, 186, 186);
-    color: white;
-    font-family: "Caveat Brush";
+    text-decoration: underline  #B22222;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 5px;
+    transition: 0.4s;
+    border-radius: 0;
 }
 
-@keyframes desvanecer {
+.ps3 {
+    display: block;
+    margin: 30px auto 0 auto;
+    width: 120px;
+    height: auto;
+    opacity: 0.7;
+    filter: drop-shadow(0 0 20px #B22222);
+    animation: pulse 3s infinite ease-in-out;
+}
+
+@keyframes glow {
     0% {
-    color: gold;
-    text-shadow: 3px 2px 0 goldenrod;
-    opacity: 1; /* completamente visible */
-}
+        text-shadow: 0 0 5px #B22222, 0 0 10px #B22222, 0 0 15px #B22222;
+    }
+    50% {
+        text-shadow: 0 0 20px #B22222, 0 0 30px #B22222, 0 0 40px #B22222;
+    }
     100% {
-    color: black;
-    text-shadow: 0 0 0 black; /* se apaga la sombra */
-    opacity: 0.2; /* casi invisible */
+        text-shadow: 0 0 5px #B22222, 0 0 10px #B22222, 0 0 15px #B22222;
+    }
 }
+
+.button-option:active {
+    transform: scale(0.95);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); filter: drop-shadow(0 0 5px #B22222); }
+    50% { transform: scale(1.0); filter: drop-shadow(0 0 10px #af2323); }
 }
